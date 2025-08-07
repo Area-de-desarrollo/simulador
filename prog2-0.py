@@ -10,10 +10,7 @@ class VentilatorSimulator(QtWidgets.QMainWindow):
         super().__init__()
         self.setWindowTitle("Simulador de Ventilador con Sensores y Alarmas")
         self.setGeometry(100, 100, 1600, 800)
-        self.setStyleSheet("""
-            background-color: #1e1e1e;
-            color: white;
-        """)
+        self.setStyleSheet("""background-color: #1e1e1e;color: white;""")
 
         # Parámetros ventilatorios iniciales
         self.resp_rate = 15        # respiraciones por minuto
@@ -42,6 +39,7 @@ class VentilatorSimulator(QtWidgets.QMainWindow):
         self.volume_data = np.array([])
 
         # Sistema de sensores y alarmas
+        #se agrego
         self.sensor_data = {
             'flujo_espirado': 0,
             'volumen_espirado': 0,
@@ -67,7 +65,7 @@ class VentilatorSimulator(QtWidgets.QMainWindow):
         # Panel izquierdo (Monitor y Alarmas)
         left_panel = QtWidgets.QVBoxLayout()
         
-        # Panel de parámetros ventilatorios
+        # Panel de parámetros ventilatorios    NUEVO
         params_group = QtWidgets.QGroupBox("Parámetros Ventilatorios")
         params_group.setStyleSheet("""
             QGroupBox {
@@ -87,10 +85,12 @@ class VentilatorSimulator(QtWidgets.QMainWindow):
         monitor_params = [
             ("Modo", self.ventilation_mode, "#004040", 18),
             ("PIP", f"{self.peak_pressure} cmH₂O", "#006060", 16),
+            ("Pplat", "18 cmH₂O", "#006060", 16),          
             ("PEEP", f"{self.peep} cmH₂O", "#006060", 16),
             ("Vt", f"{self.tidal_volume} mL", "#006060", 16),
             ("FR", f"{self.resp_rate} rpm", "#006060", 16),
-            ("I:E", f"1:{self.ie_ratio}", "#006060", 16)
+            ("I:E", f"1:{self.ie_ratio}", "#006060", 16),
+            ("SpO₂", "98%", "#008080", 16)
         ]
         
         self.labels = {}
